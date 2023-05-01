@@ -10,15 +10,13 @@ from common.utils import get_message, send_message
 
 def process_client_message(message):
     '''
-    Обработчик сообщений от клиентов, принимает словарь -
-    сообщение от клинта, проверяет корректность,
+    Обработчик сообщений от клиентов, принимает словарь - сообщение от клинта, проверяет корректность,
     возвращает словарь-ответ для клиента
-
     :param message:
     :return:
     '''
-    if ACTION in message and message[ACTION] == PRESENCE and TIME in message \
-            and USER in message and message[USER][ACCOUNT_NAME] == 'Guest':
+    if ACTION in message and message[ACTION] == PRESENCE and TIME in message and\
+            USER in message and message[USER][ACCOUNT_NAME] == 'Guest':
         return {RESPONSE: 200}
     return {
         RESPONSE: 400,
@@ -27,12 +25,12 @@ def process_client_message(message):
 
 
 def main():
-    '''
+    """
     Загрузка параметров командной строки, если нет параметров, то задаём значения по умоланию.
     Сначала обрабатываем порт:
     server.py -p 8079 -a 192.168.1.2
     :return:
-    '''
+    """
 
     try:
         if '-p' in sys.argv:
